@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	has_many :authorities_travel_and_user
+	has_many :travel, :through => :authorities_travel_and_user
 	validates :login, :presence => true
 
 	def password
