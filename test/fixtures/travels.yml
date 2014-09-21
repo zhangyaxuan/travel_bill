@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  members: 
+  creater: MyString
 
 two:
   name: MyString
-  members: 
+  creater: MyString
