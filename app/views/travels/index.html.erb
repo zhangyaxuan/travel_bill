@@ -1,0 +1,7 @@
+<h1>Travel list</h1>
+<%= link_to 'Add new travel', new_travel_path %>
+<ul>
+<% @travels.each do |travel| %>
+	<li><%= link_to travel.name, travel %></li>	
+<% end -%>
+</ul>

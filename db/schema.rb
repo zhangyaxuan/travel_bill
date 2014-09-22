@@ -11,7 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140921055957) do
+ActiveRecord::Schema.define(version: 20140922123631) do
+
+  create_table "bills", force: true do |t|
+    t.string   "payer"
+    t.float    "cost",       limit: 24
+    t.string   "subject"
+    t.datetime "date"
+    t.text     "comment"
+    t.integer  "travel_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bills", ["travel_id"], name: "index_bills_on_travel_id", using: :btree
+
+  create_table "travel_users", force: true do |t|
+    t.integer  "travel_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "travels", force: true do |t|
     t.string   "name"

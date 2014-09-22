@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
+	has_many :travel_users
+	has_many :travels, :through => :travel_users
+
 	validates :login, :presence => true
 
 	def password
-		@password
-		
+		@password		
 	end
 
 	def password=(pass)

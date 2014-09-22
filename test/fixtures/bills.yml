@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  payer: MyString
+  cost: 1.5
+  subject: MyString
+  date: 2014-09-21 19:14:21
+  comment: MyText
+
+two:
+  payer: MyString
+  cost: 1.5
+  subject: MyString
+  date: 2014-09-21 19:14:21
+  comment: MyText
