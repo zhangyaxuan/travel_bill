@@ -1,8 +1,11 @@
 class User < ActiveRecord::Base
 	has_many :travel_users
-	has_many :travels, :through => :travel_users
+	has_many :travels, through: :travel_users
+	has_many :costs
+	has_many :bills, :through => :costs
+	has_one :bill
 
-	validates :login, :presence => true
+	validates :login, presence: true
 
 	def password
 		@password		

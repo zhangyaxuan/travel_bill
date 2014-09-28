@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140922123631) do
+ActiveRecord::Schema.define(version: 20140928065928) do
 
   create_table "bills", force: true do |t|
-    t.string   "payer"
+    t.integer  "payer_id"
     t.float    "cost",       limit: 24
     t.string   "subject"
     t.datetime "date"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 20140922123631) do
   end
 
   add_index "bills", ["travel_id"], name: "index_bills_on_travel_id", using: :btree
+
+  create_table "costs", force: true do |t|
+    t.float    "money",      limit: 24
+    t.integer  "user_id"
+    t.integer  "bill_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "travel_users", force: true do |t|
     t.integer  "travel_id"
