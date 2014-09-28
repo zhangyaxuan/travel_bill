@@ -5,6 +5,12 @@
 		<%= f.text_field :name %>
 	</p>
 	<p>
+		<% @users.each do |user| %>
+			<%= check_box_tag 'user_ids[]', user.id %><%= user.login %>
+			<% %>
+		<% end %>
+	</p>
+	<p>
 		<%= f.submit %>
 	</p>
 <% end %>
