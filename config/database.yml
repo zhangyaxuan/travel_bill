@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: travel_bill_production
-  username: travel_bill
-  password: <%= ENV['TRAVEL_BILL_DATABASE_PASSWORD'] %>
+  username: b85d07ea72674d
+  password: 86287739
