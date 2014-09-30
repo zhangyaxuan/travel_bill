@@ -1,11 +1,9 @@
-<%= flash[:notice] %>
+<div class="container">
+<h1 class="form-signin-heading">Login</h1>
+<%= form_tag(sessions_path, class: "form-signin") do -%>
+	<%= text_field_tag :login, params[:login], class: "form-control", placeholder: "Username" %>
+	<%= text_field_tag :password, params[:password], class: "form-control", placeholder: "Password" %>
 
-<h1>Admin Login</h1>
-<%= form_tag sessions_path do -%>
-	<label for="login">Login</label>
-	<%= text_field_tag :login, params[:login]%>
-	<label for="password">Password</label>
-	<%= text_field_tag :password, params[:password]%>
-
-	<%= submit_tag "Login"%>
-<% end %>
+	<%= submit_tag "Login", class: "btn btn-lg btn-primary btn-block"%>
+<% end %>	
+</div>
