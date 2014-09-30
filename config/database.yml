@@ -40,15 +40,14 @@ test:
 # On Heroku and other platform providers, you may have a full connection URL
 # available as an environment variable. For example:
 #
-#   DATABASE_URL="mysql2://myuser:mypass@localhost/somedatabase"
+   DATABASE_URL="mysql2://b85d07ea72674d:86287739@us-cdbr-iron-east-01.cleardb.net/heroku_72091b8bb5d1aca?reconnect=true"
 #
 # You can use this database configuration with:
+    production:
+    url: <%= ENV['DATABASE_URL'] %>
 #
-#   production:
-#     url: <%= ENV['DATABASE_URL'] %>
-#
-production:
-  <<: *default
-  database: travel_bill_production
-  username: b85d07ea72674d
-  password: 86287739
+# production:
+#   <<: *default
+#   database: travel_bill_production
+#   username: b85d07ea72674d
+#   password: 86287739
