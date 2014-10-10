@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   
   resources :travels do 
     resources :bills
+    get 'result'
   end
 
   # Example resource route with options:

@@ -30,6 +30,10 @@ class TravelsController < ApplicationController
 		@travel = Travel.find(params[:id])
 	end
 
+	def result
+		binding.pry
+	end
+
 	private
 	def travel_params
 		params.require(:travel).permit(:name)

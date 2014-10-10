@@ -7,6 +7,12 @@
 		<%= f.select :payer_id, @travel.users.collect {|u| [u.login, u.id]} %>
 	</p>
 	<p>
+		<%= label_tag 'consumers', 'consumers' %>
+		<% @travel.users.each do |user| %>
+			<%= check_box_tag 'user_ids[]', user.id%><%= user.login %>
+		<% end -%>
+	</p>
+	<p>
 		<%= f.label :cost %>
 		<%= f.text_field :cost %>
 	</p>
@@ -26,10 +32,12 @@
 <% end %>
 
 <h2>Bill list</h2>
+<%= link_to 'Show calculation result', travel_result_path(@travel) %>
 <ul>
 	<% @travel.bills.each do |bill| %>
 		<li><%= bill.subject %> cost:<%= bill.cost %></li>
 	<% end %>
 </ul>
+
 
 <%= link_to 'Back to travel list', travels_path %>
