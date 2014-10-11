@@ -22,7 +22,8 @@ class TravelsController < ApplicationController
 	end
 
 	def index
-		@travels = Travel.all
+		@travels = Travel.where('Travels.id in (?)',TravelUser.travels_of_user(session[:user_id]))
+		#binding.pry
 	end
 
 	def show
