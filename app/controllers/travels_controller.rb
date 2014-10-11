@@ -22,11 +22,7 @@ class TravelsController < ApplicationController
 	end
 
 	def index
-    if session[:user_id].nil?
-      redirect_to "/"
-    else
-      @travels = Travel.all
-    end
+		@travels = Travel.where('Travels.id in (?)',TravelUser.travels_of_user(session[:user_id]))
 	end
 
 	def show
