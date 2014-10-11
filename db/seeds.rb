@@ -5,4 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create([{login: 'nancy', password: '111'}, {login: 'sean', password: '111'}, {login: 'rocky', password: '111'}, {login: 'ema', password: '111'}]) if User.where(login:'nancy').blank?
+User.destroy_all
+User.create([{login: 'nancy', password: '111'}, {login: 'sean', password: '111'}, {login: 'rocky', password: '111'}, {login: 'ema', password: '111'}])
