@@ -1,6 +1,6 @@
 <h1>Result</h1>
 <h2>Total cost <%= @total_cost %></h2>
-<% @result.each do |cost| %>
-	<li><%= cost[0] %> : <%= cost[1]%></li> 
+<% @results.each do |result| %>
+	<li><%= User.find(result.keys.first).login%> : <%= result.values.first %></li> 
 <% end -%>
-<%= link_to "Back" %>
+<%= link_to "Back", travel_url(@travel)%>
