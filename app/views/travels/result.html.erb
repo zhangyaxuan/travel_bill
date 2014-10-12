@@ -1,6 +1,22 @@
-<h1>Result</h1>
-<h2>Total cost <%= @total_cost %></h2>
-<% @results.each do |result| %>
-	<li><%= User.find(result.keys.first).login%> : <%= result.values.first %></li> 
-<% end -%>
+<h3>Total cost: <%= @travel_cost %></h3>
+<h3>Cost list</h3>
+<ul>
+	<% @user_costs.each do |cost| %>
+		<li><%= User.find(cost.keys.first).login %> : <%= cost.values.first %></li> 
+	<% end -%>
+</ul>
+
+<h3>Pay list</h3>
+<ul>
+	<% @user_pays.each do |user_pay|%>
+		<li><%= User.find(user_pay.keys.first).login %> : <%= user_pay.values.first %></li>
+	<% end -%>
+</ul>
+
+<h3>Result</h3>
+<ul>
+	<% @results.each do |result|%>
+		<li><%= User.find(result.keys.first).login %> : <%= result.values.first %></li>
+	<% end -%>
+</ul>
 <%= link_to "Back", travel_url(@travel)%>
