@@ -20,8 +20,7 @@ class BillsController < ApplicationController
 			@cost.user_id = consumer_id
 			@cost.bill_id = @bill.id
 			@cost.money = bill_params['cost'].to_f / consumer_ids.length
-			@cost.save
-			binding.pry			
+			@cost.save			
 		end
 	end
 
