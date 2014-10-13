@@ -8,6 +8,7 @@ class TravelsController < ApplicationController
 		@travel = Travel.new(travel_params)
 
 		user_ids = params['user_ids']
+
 		user_ids.each do |u_id|
 			u = ::User.find(u_id)
 			@travel.users << u
@@ -23,7 +24,6 @@ class TravelsController < ApplicationController
 
 	def index
 		@travels = Travel.where('Travels.id in (?)',TravelUser.travels_of_user(session[:user_id]))
-		#binding.pry
 	end
 
 	def show
@@ -33,25 +33,16 @@ class TravelsController < ApplicationController
 	def result
 		@travel = Travel.find(params[:travel_id])
 		@travel_cost = @travel.total_cost
-		@user_costs = Cost.cost_by_user(@travel.bills).map{|x| {x.user_id => x.user_money}}
-
-		@user_pays = Bill.pay_by_user(@travel.bills).map { |x| {x.payer_id => x.user_pay}  }
 		
-		@results = @user_costs.map{|x| {x.keys.first => calculate(x, @user_pays)} }
+		@user_costs = Cost.cost_by_user(@travel.bills).map{|x| [x.user_id, x.user_money.round(2)]}
+		@user_pays = Bill.pay_by_user(@travel.bills).map { |x| [x.payer_id, x.user_pay.round(2)]}
+		@results = @user_costs.to_h.merge(@user_pays.to_h){|key, user_cost, user_pay| (user_cost - user_pay).round(2)}
+
 	end
 
 
 	private
 	def travel_params
 		params.require(:travel).permit(:name)
-	end
-
-	def calculate(user_cost, user_pays)
-		cost = user_cost.values.first
-		user_pay = @user_pays.select {|y| user_cost.keys.first == y.keys.first }.at(0)
-		unless user_pay.blank?
-		 	return user_pay.values.first - cost
-		end 
-		return 0 - cost
 	end
 end

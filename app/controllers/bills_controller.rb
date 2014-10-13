@@ -3,6 +3,7 @@ class BillsController < ApplicationController
 		@travel = Travel.find(params[:travel_id])
 		@bill =	@travel.bills.create(bill_params)
 		save_cost
+		save_payer unless params['user_ids'].include?(bill_params['payer_id']) 
 		
 		redirect_to travel_path(@travel)
 	end
@@ -21,5 +22,9 @@ class BillsController < ApplicationController
 			@cost.money = bill_params['cost'].to_f / consumer_ids.length
 			@cost.save		
 		end
+	end
+
+	def save_payer
+		Cost.new(user_id: bill_params['payer_id'], bill_id:  @bill.id, money: 0.0).save
 	end
 end
