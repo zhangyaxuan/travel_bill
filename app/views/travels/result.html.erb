@@ -2,21 +2,21 @@
 <h3>Cost list</h3>
 <ul>
 	<% @user_costs.each do |cost| %>
-		<li><%= User.find(cost.keys.first).login %> : <%= cost.values.first %></li> 
+		<li><%= User.find(cost[0]).login %> : <%= cost[1] %></li> 
 	<% end -%>
 </ul>
 
 <h3>Pay list</h3>
 <ul>
 	<% @user_pays.each do |user_pay|%>
-		<li><%= User.find(user_pay.keys.first).login %> : <%= user_pay.values.first %></li>
+		<li><%= User.find(user_pay[0]).login %> : <%= user_pay[1]%></li>
 	<% end -%>
 </ul>
 
 <h3>Result</h3>
 <ul>
-	<% @results.each do |result|%>
-		<li><%= User.find(result.keys.first).login %> : <%= result.values.first %></li>
+	<% @results.each do |k, v|%>
+		<li><%= User.find(k).login %> : <%= v %></li>
 	<% end -%>
 </ul>
 <%= link_to "Back", travel_url(@travel)%>
