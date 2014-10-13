@@ -12,6 +12,10 @@ class BillsController < ApplicationController
 		params.require(:bill).permit(:payer_id, :cost, :subject, :date, :comment)
 	end
 
+	def edit
+		
+	end
+
 	private
 	def save_cost
 		consumer_ids = params['user_ids']
