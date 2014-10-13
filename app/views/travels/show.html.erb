@@ -1,16 +1,14 @@
 <h1><%= @travel.name %></h1>
 
 <h2>Add a new bill</h2>
-<%= form_for([@travel, @travel.bills.build]) do |f| %>
+<%= form_for([@travel, Bill.new]) do |f| %>
 	<p>
 		<%= f.label :payer_id, 'payer' %>
 		<%= f.select :payer_id, @travel.users.collect {|u| [u.login, u.id]} %>
 	</p>
 	<p>
 		<%= label_tag 'consumers', 'consumers' %>
-		<% @travel.users.each do |user| %>
-			<%= check_box_tag 'user_ids[]', user.id%><%= label_tag 'user_ids[]', user.login %>
-		<% end -%>
+		<%= select_users(@travel.users) %>
 	</p>
 	<p>
 		<%= f.label :cost %>
@@ -35,7 +33,7 @@
 <%= link_to 'Show calculation result', travel_result_path(@travel) %>
 <ul>
 	<% @travel.bills.each do |bill| %>
-		<li><%= bill.subject %> cost:<%= bill.cost %></li>
+		<li><%= link_to bill.subject, edit_travel_bill_path(@travel, bill.id) %> cost:<%= bill.cost %></li>
 	<% end %>
 </ul>
 
