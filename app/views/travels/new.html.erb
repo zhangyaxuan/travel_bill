@@ -18,12 +18,12 @@
 
   <%= form_for @travel do |f| %>
       <p class="nameInput">
-        <%= f.text_field :name %>
+        <%= f.text_field :name, placeholder: "Input the new travel name" %>
       </p>
       <ul class="list-group">
         <li class="list-group-item hint">Choose the travel members</li>
         <% @users.each do |user| %>
-            <li class="list-group-item"><%= check_box_tag 'user_ids[]', user.id %><%= user.login %></li>
+            <label><li class="list-group-item"><%= check_box_tag 'user_ids[]', user.id %><%= user.login %></li></label>
         <% end %>
       </ul>
       <p>

@@ -15,7 +15,7 @@
   <h1><%= @travel.name %></h1>
 
   <ul class="list-group bill-build-form">
-    <%= form_for([@travel, @travel.bills.build]) do |f| %>
+    <%= form_for([@travel, Bill.new]) do |f| %>
         <li class="list-group-item row">
           <%= f.submit :class=>"btn btn-lg btn-orange build-bill" %>
         </li>
@@ -32,9 +32,7 @@
             <%= label_tag 'consumers', 'consumers' %>
           </p>
           <p class="col-xs-8">
-            <% @travel.users.each do |user| %>
-                <%= check_box_tag 'user_ids[]', user.id,:class => "form-control" %><%= user.login %>
-            <% end -%>
+            <%= select_users(@travel.users) %>
           </p>
         </li>
         <li class="list-group-item row">
@@ -76,7 +74,9 @@
   </p>
   <ul class="list-group">
     <% @travel.bills.each do |bill| %>
-        <li class="list-group-item"><%= bill.subject %> cost:<%= bill.cost %></li>
+        <li class="list-group-item">
+        <%= link_to bill.subject, edit_travel_bill_path(@travel, bill.id) %> cost:<%= bill.cost %>
+        <%= link_to 'delete', travel_bill_path(@travel, bill.id), method: :delete, data: { confirm: 'Are you sure?' } %></li>
     <% end %>
   </ul>
 </div>
