@@ -25,7 +25,7 @@ class BillsController < ApplicationController
 			render 'edit'
 		end
 	end
-	
+
 	def destroy
 		Bill.delete(params[:id])
 		redirect_to travel_path(params[:travel_id])
@@ -39,11 +39,7 @@ class BillsController < ApplicationController
 			@cost.user_id = consumer_id
 			@cost.bill_id = @bill.id
 			@cost.money = bill_params['cost'].to_f / consumer_ids.length
-<<<<<<< HEAD
 			@cost.save			
-=======
-			@cost.save		
->>>>>>> 32a44afc8559c20242fda77e837168eeb7413fda
 		end
 	end
 
