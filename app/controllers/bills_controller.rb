@@ -13,7 +13,12 @@ class BillsController < ApplicationController
 	end
 
 	def edit
-		
+		@bill = Bill.find(params[:id])
+	end
+
+	def destroy
+		Bill.delete(params[:id])
+		redirect_to travel_path(params[:travel_id])
 	end
 
 	private
