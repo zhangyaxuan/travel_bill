@@ -3,8 +3,6 @@ class BillsController < ApplicationController
 		@travel = Travel.find(params[:travel_id])
 		@bill =	@travel.bills.create(bill_params)
 		save_cost
-		save_payer unless params['user_ids'].include?(bill_params['payer_id']) 
-		
 		redirect_to travel_path(@travel)
 	end
 
@@ -19,7 +17,7 @@ class BillsController < ApplicationController
 
 	def update
 		@bill = Bill.find(params[:id])
-		if @bill.update(bill_params)
+		if @bill.update(bill_params) && update_cost
 			redirect_to travel_path(params[:travel_id])
 		else
 			render 'edit'
@@ -41,6 +39,12 @@ class BillsController < ApplicationController
 			@cost.money = bill_params['cost'].to_f / consumer_ids.length
 			@cost.save			
 		end
+		save_payer unless params['user_ids'].include?(bill_params['payer_id']) 
+	end
+
+	def update_cost
+		Cost.delete_all(bill_id: params[:id])
+		save_cost
 	end
 
 	def save_payer
