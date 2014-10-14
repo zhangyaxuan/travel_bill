@@ -13,7 +13,17 @@ class BillsController < ApplicationController
 	end
 
 	def edit
+		@travel = Travel.find(params[:travel_id])
 		@bill = Bill.find(params[:id])
+	end
+
+	def update
+		@bill = Bill.find(params[:id])
+		if @bill.update(bill_params)
+			redirect_to travel_path(params[:travel_id])
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy

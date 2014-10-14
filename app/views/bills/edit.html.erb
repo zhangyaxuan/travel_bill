@@ -1,1 +1,29 @@
-edit it
+<h2>Edit this bill</h2>
+
+<%= form_for :bill, url: travel_bill_path(@travel, @bill.id), method: :patch do |f| %>
+	<p>
+		<%= f.label :payer_id, 'payer' %>
+		<%= f.select :payer_id, @travel.users.collect {|u| [u.login, u.id]} %>
+	</p>
+	<p>
+		<%= label_tag 'consumers', 'consumers' %>
+		<%= select_users(@travel.users) %>
+	</p>
+	<p>
+		<%= f.label :cost %>
+		<%= f.text_field :cost %>
+	</p>
+	<p>
+		<%= f.label :subject %>
+		<%= f.text_field :subject %>
+	</p>
+	<p>
+		<%= f.label :date %>
+		<%= f.datetime_select :date %>
+	</p>
+	<p>
+		<%= f.label :comment %>
+		<%= f.text_area :comment %>
+	</p>
+	<%= f.submit %>
+<% end %>
