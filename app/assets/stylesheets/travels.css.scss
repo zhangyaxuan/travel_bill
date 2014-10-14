@@ -1,3 +1,56 @@
-// Place all the styles related to the travels controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$orange: rgb(255, 92, 0);
+
+.header-new{
+  padding-bottom: 15px;
+}
+.nameInput {
+  margin: 0;
+  input{
+    width: 100%;
+    padding: 8px;
+    border: 1px solid $orange;
+    border-bottom: 0;
+  }
+}
+
+.list-group-item{
+  border-color: #fff;
+  background: #eee;
+  font-size: 1.5em;
+  input{
+    margin: 8px;
+  }
+}
+
+.hint{
+  background: $orange;
+  color: #fff;
+  text-align: center;
+}
+
+.travel-list li{
+  a{
+    display: block;
+    width: 100%;
+    color: #666666;
+    text-decoration: none;
+  }
+}
+
+.build-bill{
+  width: 100%;
+}
+
+.bill-build-form{
+  .col-xs-4{
+    overflow: hidden;
+    label{
+      height: 50px;
+      width: 95%;
+      border-right: 5px solid $orange;
+    }
+  }
+  textarea{
+    width: 100%;
+  }
+}

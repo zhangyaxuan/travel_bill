@@ -1,43 +1,85 @@
-<h1><%= @travel.name %></h1>
+<head>
+  <title>TravelBill</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <%= stylesheet_link_tag    "bootstrap.min", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "common", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "travels", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container-fluid">
+  <%= link_to 'Logout', logout_sessions_path %>
+  <%= link_to 'Back to travel list', travels_path %>
 
-<h2>Add a new bill</h2>
-<%= form_for([@travel, @travel.bills.build]) do |f| %>
-	<p>
-		<%= f.label :payer_id, 'payer' %>
-		<%= f.select :payer_id, @travel.users.collect {|u| [u.login, u.id]} %>
-	</p>
-	<p>
-		<%= label_tag 'consumers', 'consumers' %>
-		<% @travel.users.each do |user| %>
-			<%= check_box_tag 'user_ids[]', user.id%><%= user.login %>
-		<% end -%>
-	</p>
-	<p>
-		<%= f.label :cost %>
-		<%= f.text_field :cost %>
-	</p>
-	<p>
-		<%= f.label :subject %>
-		<%= f.text_field :subject %>
-	</p>
-	<p>
-		<%= f.label :date %>
-		<%= f.datetime_select :date %>
-	</p>
-	<p>
-		<%= f.label :comment %>
-		<%= f.text_area :comment %>
-	</p>
-	<%= f.submit %>
-<% end %>
+  <h1><%= @travel.name %></h1>
 
-<h2>Bill list</h2>
-<%= link_to 'Show calculation result', travel_result_path(@travel) %>
-<ul>
-	<% @travel.bills.each do |bill| %>
-		<li><%= bill.subject %> cost:<%= bill.cost %></li>
-	<% end %>
-</ul>
+  <ul class="list-group bill-build-form">
+    <%= form_for([@travel, @travel.bills.build]) do |f| %>
+        <li class="list-group-item row">
+          <%= f.submit :class=>"btn btn-lg btn-orange build-bill" %>
+        </li>
+        <li class="list-group-item row">
+          <p class="col-xs-4">
+            <%= f.label :payer_id, 'payer' %>
+          </p>
+          <p class="col-xs-8">
+              <%= f.select :payer_id, @travel.users.collect {|u| [u.login, u.id]} ,:class => "form-control" %>
+          </p>
+        </li>
+        <li class="list-group-item row">
+          <p class="col-xs-4">
+            <%= label_tag 'consumers', 'consumers' %>
+          </p>
+          <p class="col-xs-8">
+            <% @travel.users.each do |user| %>
+                <%= check_box_tag 'user_ids[]', user.id,:class => "form-control" %><%= user.login %>
+            <% end -%>
+          </p>
+        </li>
+        <li class="list-group-item row">
+          <p class="col-xs-4">
+            <%= f.label :cost %>
+          </p>
+          <p class="col-xs-8">
+            <%= f.text_field :cost ,:class => "form-control" %>
+          </p>
+        </li>
+        <li class="list-group-item row">
+          <p class="col-xs-4">
+            <%= f.label :subject %>
+          </p>
+          <p class="col-xs-8">
+            <%= f.text_field :subject ,:class => "form-control"%>
+          </p>
+        </li>
+        <li class="list-group-item row">
+          <p class="col-xs-4">
+            <%= f.label :date %>
+          </p>
+          <p class="col-xs-8">
+            <%= f.date_select :date ,:class => "form-control"%>
+          </p>
+        </li>
+        <li class="list-group-item row">
+          <p class="col-xs-12">
+            <%= f.text_area :comment,:class => "form-control"%>
+          </p>
+        </li>
+    <% end %>
+  </ul>
 
 
-<%= link_to 'Back to travel list', travels_path %>
+  <h2>Bill list</h2>
+  <p class="btn btn-lg btn-orange">
+    <%= link_to 'Show calculation result', travel_result_path(@travel) %>
+  </p>
+  <ul class="list-group">
+    <% @travel.bills.each do |bill| %>
+        <li class="list-group-item"><%= bill.subject %> cost:<%= bill.cost %></li>
+    <% end %>
+  </ul>
+</div>
+</body>
+
+

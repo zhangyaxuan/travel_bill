@@ -1,5 +1,23 @@
-<h1>Welcome to travel bill.</h1>
-Click <%= link_to 'Here', new_session_path %> to login.
-<h2>Have fun :)</h2>
+<head>
+  <title>TravelBill</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <%= stylesheet_link_tag    "bootstrap.min", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "common", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "welcome", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <div class="container-fluid">
+      <% if session[:user_id] %>
+          <%= link_to 'Logout', logout_sessions_path %>
+      <% end %>
+
+      <h1>Welcome to travel bill</h1>
+      <h3>Click <%= link_to 'Here', new_session_path %> to login.</h3>
+      <p>Have fun :)</p>
+    </div>
+</body>
+
 
 

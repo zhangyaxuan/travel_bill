@@ -23,7 +23,11 @@ class TravelsController < ApplicationController
 	end
 
 	def index
-		@travels = Travel.all
+    if session[:user_id].nil?
+      redirect_to "/"
+    else
+      @travels = Travel.all
+    end
 	end
 
 	def show

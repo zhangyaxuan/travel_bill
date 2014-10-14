@@ -1,9 +1,35 @@
-<div class="container">
-<h1 class="form-signin-heading">Login</h1>
-<%= form_tag(sessions_path, class: "form-signin") do -%>
-	<%= text_field_tag :login, params[:login], class: "form-control", placeholder: "Username" %>
-	<%= text_field_tag :password, params[:password], class: "form-control", placeholder: "Password" %>
+<head>
+  <title>TravelBill</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <%= stylesheet_link_tag    "bootstrap.min", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "common", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "sessions", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% if session[:user_id] %>
+    <%= link_to 'Logout', logout_sessions_path %>
+<% end %>
 
-	<%= submit_tag "Login", class: "btn btn-lg btn-primary btn-block"%>
-<% end %>	
+<div class="container-fluid">
+  <section class="header">
+    <h1 class="form-signin-heading">Login</h1>
+  </section>
+  <section class="login">
+    <%= form_tag(sessions_path, class: "form-signin") do -%>
+        <%= text_field_tag :login, params[:login], placeholder: "Username" %>
+        <%= text_field_tag :password, params[:password], placeholder: "Password" %>
+
+        <div class="row">
+          <div class="col-xs-offset-4 col-xs-4">
+            <p class="btn btn-lg btn-default">register</p>
+            <%= submit_tag "Login", class: "btn btn-lg btn-primary submit"%>
+          </div>
+        </div>
+    <% end %>
+  </section>
 </div>
+</body>
+
+

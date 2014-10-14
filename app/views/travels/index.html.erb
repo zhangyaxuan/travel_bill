@@ -1,7 +1,23 @@
-<h1>Travel list</h1>
-<%= link_to 'Add new travel', new_travel_path %>
-<ul>
-<% @travels.each do |travel| %>
-	<li><%= link_to travel.name, travel %></li>	
-<% end -%>
-</ul>
+<head>
+  <title>TravelBill</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <%= stylesheet_link_tag    "bootstrap.min", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "common", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "travels", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <div class="container-fluid">
+      <%= link_to 'Logout', logout_sessions_path %>
+
+      <h1>Travel list</h1>
+      <p class="btn-lg btn btn-orange"><%= link_to 'Add new travel', new_travel_path %></p>
+      <ul class="list-group travel-list">
+        <% @travels.each do |travel| %>
+            <li class="list-group-item"><%= link_to travel.name, travel %></li>
+        <% end -%>
+      </ul>
+    </div>
+</body>
+
