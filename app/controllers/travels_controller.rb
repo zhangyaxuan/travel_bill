@@ -4,6 +4,7 @@ class TravelsController < ApplicationController
 		@travel = Travel.new
 		@users = User.all
 	end
+	
 	def create
 		@travel = Travel.new(travel_params)
 

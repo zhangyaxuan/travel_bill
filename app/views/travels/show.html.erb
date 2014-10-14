@@ -33,7 +33,7 @@
 <%= link_to 'Show calculation result', travel_result_path(@travel) %>
 <ul>
 	<% @travel.bills.each do |bill| %>
-		<li><%= link_to bill.subject, edit_travel_bill_path(@travel, bill.id) %> cost:<%= bill.cost %></li>
+		<li><%= link_to bill.subject, edit_travel_bill_path(@travel, bill.id) %> cost:<%= bill.cost %><%= link_to 'delete', travel_bill_path(@travel, bill.id), method: :delete, data: { confirm: 'Are you sure?' }%></li>
 	<% end %>
 </ul>
 
