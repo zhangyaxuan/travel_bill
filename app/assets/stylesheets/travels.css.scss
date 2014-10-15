@@ -15,19 +15,17 @@ $orange: rgb(255, 92, 0);
 
 .list-group-item{
   border-color: #fff;
+  background-color: #eee;
   font-size: 1.5em;
   border-radius: 0 !important;
   border: none;
+  margin-bottom: 1px;
   input{
     margin: 8px;
   }
   .icheckbox_flat-grey{
     margin-right: 10px;
   }
-}
-
-ul{
-  border: 1px solid darkorange;
 }
 
 .hint{
