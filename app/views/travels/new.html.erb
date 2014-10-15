@@ -3,14 +3,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <%= stylesheet_link_tag    "bootstrap.min", media: "all", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag    "common", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "grey", media: "all", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag    "travels", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <div class="container-fluid">
-  <%= link_to 'Logout', logout_sessions_path %>
-  <%= link_to 'Back to travel list', travels_path %>
+  <%= link_to 'Logout', logout_sessions_path ,:class=>"opt-logout badge" %>
+  <%= link_to 'Back to travel list', travels_path ,:class=>"opt-back badge" %>
 
   <section class="header-new">
     <h1>New Travel</h1>
@@ -22,8 +24,11 @@
       </p>
       <ul class="list-group">
         <li class="list-group-item hint">Choose the travel members</li>
+
         <% @users.each do |user| %>
-            <label><li class="list-group-item"><%= check_box_tag 'user_ids[]', user.id %><%= user.login %></li></label>
+            <li class="list-group-item travel-member-checkbox">
+                <%= check_box_tag 'user_ids[]', user.id%><%= user.login %>
+            </li>
         <% end %>
       </ul>
       <p>

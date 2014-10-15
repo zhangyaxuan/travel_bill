@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container-fluid">
-      <%= link_to 'Logout', logout_sessions_path %>
+      <%= link_to 'Logout', logout_sessions_path , :class=>"opt-logout badge" %>
 
       <h1>Travel list</h1>
       <p class="btn-lg btn btn-orange"><%= link_to 'Add new travel', new_travel_path %></p>

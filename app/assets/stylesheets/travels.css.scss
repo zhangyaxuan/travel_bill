@@ -15,17 +15,26 @@ $orange: rgb(255, 92, 0);
 
 .list-group-item{
   border-color: #fff;
-  background: #eee;
   font-size: 1.5em;
+  border-radius: 0 !important;
+  border: none;
   input{
     margin: 8px;
   }
+  .icheckbox_flat-grey{
+    margin-right: 10px;
+  }
+}
+
+ul{
+  border: 1px solid darkorange;
 }
 
 .hint{
   background: $orange;
   color: #fff;
   text-align: center;
+  font-size: 1em;
 }
 
 .travel-list li{

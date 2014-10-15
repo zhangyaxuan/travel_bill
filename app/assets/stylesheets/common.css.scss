@@ -1,5 +1,6 @@
 .container-fluid{
   max-width: 960px;
+  overflow: hidden;
 }
 h1, h2, h3, h4{
   text-align: center;
@@ -20,4 +21,9 @@ $orange: rgb(255, 92, 0);
 .btn.cent{
   margin-left: auto;
   margin-right: auto;
+}
+.badge{
+  padding: 5px 8px;
+  background: #aaa;
+  margin-top: 5px;
 }
