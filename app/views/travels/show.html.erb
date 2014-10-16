@@ -19,14 +19,11 @@
   <ul class="list-group bill-build-form">
     <%= form_for([@travel, Bill.new]) do |f| %>
         <li class="list-group-item row">
-          <%= f.submit :class=>"btn btn-lg btn-orange build-bill" %>
-        </li>
-        <li class="list-group-item row">
           <p class="col-xs-4">
             <%= f.label :payer_id, 'payer' %>
           </p>
           <p class="col-xs-8">
-              <%= f.select :payer_id, @travel.users.collect {|u| [u.login, u.id]} ,:class => "form-control" %>
+              <%= f.select :payer_id, @travel.users.collect {|u| [u.login, u.id]}, :prompt=>"Choose a payer", :class=>'form-control'%>
           </p>
         </li>
         <li class="list-group-item row">
@@ -63,15 +60,18 @@
         </li>
         <li class="list-group-item row">
           <p class="col-xs-12">
-            <%= f.text_area :comment,:class => "form-control"%>
+            <%= f.text_area :comment,:class => "form-control", :placeholder => "comment"%>
           </p>
+        </li>
+        <li class="list-group-item row">
+          <%= f.submit :class=>"btn btn-lg btn-orange build-bill btn-row" %>
         </li>
     <% end %>
   </ul>
 
 
   <h2>Bill list</h2>
-  <p class="btn btn-lg btn-orange">
+  <p class="btn btn-lg btn-orange btn-row">
     <%= link_to 'Show calculation result', travel_result_path(@travel) %>
   </p>
   <ul class="list-group">
