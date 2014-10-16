@@ -11,8 +11,10 @@
 <div class="container-fluid">
   <%= link_to 'Logout', logout_sessions_path ,:class=>"opt-logout badge" %>
   <%= link_to 'Back to travel list', travels_path ,:class=>"opt-back badge" %>
-
-  <h1><%= @travel.name %></h1>
+  
+  <section class="header">
+    <h1><%= @travel.name %></h1>
+  </section>
 
   <ul class="list-group bill-build-form">
     <%= form_for([@travel, Bill.new]) do |f| %>

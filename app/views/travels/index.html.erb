@@ -10,8 +10,9 @@
 <body>
     <div class="container-fluid">
       <%= link_to 'Logout', logout_sessions_path , :class=>"opt-logout badge" %>
-
-      <h1>Travel list</h1>
+      <section class="header">
+        <h1>Travel list</h1>
+      </section>
       <p class="btn-lg btn btn-orange"><%= link_to 'Add new travel', new_travel_path %></p>
       <ul class="list-group travel-list">
         <% @travels.each do |travel| %>

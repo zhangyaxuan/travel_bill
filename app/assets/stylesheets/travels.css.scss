@@ -57,6 +57,9 @@ $orange: rgb(255, 92, 0);
       border-right: 5px solid $orange;
     }
   }
+  .list-group-item{
+    padding: 0 15px;
+  }
   textarea{
     width: 100%;
   }
