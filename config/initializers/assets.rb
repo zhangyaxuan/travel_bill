@@ -5,10 +5,10 @@
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w( bootstrap.min.css )
-Rails.application.config.assets.precompile += %w( common.css )
-Rails.application.config.assets.precompile += %w( welcome.css )
-Rails.application.config.assets.precompile += %w( sessions.css )
-Rails.application.config.assets.precompile += %w( travels.css )
-Rails.application.config.assets.precompile += %w( grey.css )
+# Rails.application.config.assets.precompile += %w( search.js )
+# Rails.application.config.assets.precompile += %w( bootstrap.min.css )
+# Rails.application.config.assets.precompile += %w( common.css )
+# Rails.application.config.assets.precompile += %w( welcome.css )
+# Rails.application.config.assets.precompile += %w( sessions.css )
+# Rails.application.config.assets.precompile += %w( travels.css )
+# Rails.application.config.assets.precompile += %w( grey.css )
