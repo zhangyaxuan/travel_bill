@@ -1,4 +1,4 @@
-<h3>Total cost: <%= @travel_cost %></h3>
+<!-- <h3>Total cost: <%= @travel_cost %></h3>
 <h3>Cost list</h3>
 <ul>
 	<% @user_costs.each do |cost| %>
@@ -19,4 +19,27 @@
 		<li><%= User.find(k).login %> : <%= v %></li>
 	<% end -%>
 </ul>
-<%= link_to "Back", travel_url(@travel)%>
+<%= link_to "Back", travel_url(@travel)%> -->
+<head>
+  <title>TravelBill</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <%= stylesheet_link_tag    "bootstrap.min", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "common", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "travels", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container-fluid">
+	<%= link_to "Back", travel_url(@travel),:class=>"opt-back badge"%>
+	<h3>Total cost: <%= @travel_cost %></h3>
+	<% @user_costs.each do |cost| %>
+	<div class="result-container">
+		<div class="cost-container"><%= cost[1] %></div>
+		<%= User.find(cost[0]).login %>
+		<p class="should-pay"><%= @results[cost[0]]%></p>
+	</div>
+	<% end -%>
+
+</div>
+</body>

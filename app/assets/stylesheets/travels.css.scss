@@ -70,3 +70,24 @@ $orange: rgb(255, 92, 0);
     width: 100%;
   }
 }
+.result-container{
+  width: 80px;
+  float: left;
+  margin: 13px;
+  color: #7F8C8D;
+  text-align: center;
+}
+.cost-container{
+  border-radius: 50%;
+  height: 80px;
+  border: solid 1px;
+  border-color: $orange;
+  color: $orange;
+  text-align: center;
+  padding-top: 29px;
+  margin-bottom: 10px;
+
+}
+.should-pay{
+  color: green;
+}
